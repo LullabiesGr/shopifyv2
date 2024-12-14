@@ -1,15 +1,28 @@
-# we use Shopify as our ecommerce platform
-{%- comment -%}
-# Caution! Please read https://help.shopify.com/en/manual/promoting-marketing/seo/editing-robots-txt before proceeding to make changes to this file.
-{% endcomment %}
-{% for group in robots.default_groups %}
-  {{- group.user_agent -}}
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/sections/Hero';
+import ProblemSolution from './components/sections/ProblemSolution';
+import Features from './components/sections/Features';
+import Testimonials from './components/sections/Testimonials';
+import Demo from './components/sections/Demo';
+import Pricing from './components/sections/Pricing';
+import ClosingCTA from './components/sections/ClosingCTA';
+import Footer from './components/Footer';
 
-  {% for rule in group.rules %}
-    {{- rule -}}
-  {% endfor %}
+function App() {
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <Navbar />
+      <Hero />
+      <ProblemSolution />
+      <Features />
+      <Testimonials />
+      <Demo />
+      <Pricing />
+      <ClosingCTA />
+      <Footer />
+    </div>
+  );
+}
 
-  {%- if group.sitemap != blank -%}
-    {{ group.sitemap }}
-  {%- endif -%}
-{% endfor %}
+export default App;
