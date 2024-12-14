@@ -1,0 +1,68 @@
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Shop the latest trends"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="relative">
+  {% if section.settings.background_image %}
+    <div class="absolute inset-0">
+      <img src="{{ section.settings.background_image | img_url: '2000x' }}" 
+           alt="" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
+    </div>
+  {% endif %}
+
+  <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+    <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+      {{ section.settings.heading }}
+    </h1>
+    <p class="mt-6 text-xl text-white max-w-3xl">
+      {{ section.settings.subheading }}
+    </p>
+    {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <div class="mt-10">
+        <a href="{{ section.settings.button_link }}" 
+           class="inline-block bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 rounded-md">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
