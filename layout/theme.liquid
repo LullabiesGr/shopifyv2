@@ -9,23 +9,23 @@
   <meta name="description" content="{{ page_description | escape }}">
   
   {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+  {{ 'animations.css' | asset_url | stylesheet_tag }}
   {{ 'index.css' | asset_url | stylesheet_tag }}
   
-  <script src="{{ 'script.js' | asset_url }}" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  
+  <script src="{{ 'animations.js' | asset_url }}" defer></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
   
   {{ content_for_header }}
 </head>
-<body class="min-h-screen bg-white">
+<body class="min-h-screen bg-black text-white">
   {% section 'header' %}
   
-  <main role="main" id="MainContent">
+  <main role="main" id="MainContent" class="fade-up">
     {{ content_for_layout }}
   </main>
 
   {% section 'footer' %}
-  {% section 'hero' %}
-{% section 'features' %}
-{% section 'testimonials' %}
-{% section 'cta' %}
 </body>
 </html>
